@@ -93,7 +93,6 @@ const AutoSuggestionField: React.FC<Props> = ({
   const componentRef = useRef<View>(null);
   const [renderAtTop, setRenderAtTop] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
-  const [showSuggestion, setShowSuggestion] = useState<any>(null);
 
   const [input, setInput] = useState('');
 
@@ -165,7 +164,6 @@ const AutoSuggestionField: React.FC<Props> = ({
                       onPress={async () => {
                         setInput('');
                         await setFieldValue(name, item[displayText] ?? '');
-                        setShowSuggestion(false);
                         if (updateValue) updateValue();
                       }}
                     >
@@ -205,14 +203,12 @@ const AutoSuggestionField: React.FC<Props> = ({
             value={value}
             onChangeText={async text => {
               setInput(text);
-              setShowSuggestion(true);
               await setFieldValue(name, text);
               handleChange(name);
               await fetchDataDebounce(text);
               setDropdownBoxPosition();
             }}
             onBlur={e => {
-              setShowSuggestion(false);
               handleBlur(name)(e);
             }}
             placeholder={placeholder || ''}

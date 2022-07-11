@@ -15,85 +15,10 @@ import {
 
 import AutoSuggestionField from './src/fields/AutoSuggestionField/AutoSuggestionField';
 import NativePicker from './src/fields/NativePicker/NativePicker';
-
-const addons = [
-  {
-    id: 'no-1',
-    title: 'Tittle 1',
-    description: `sddsd', 'efwef', 'efwesdf`,
-    value: [
-      {
-        label: 'l-1-1',
-        value: 1111,
-        price: 10,
-      },
-      {
-        label: 'l-1-2',
-        value: 2222,
-        price: 20,
-      },
-    ],
-  },
-  {
-    id: 'no-2',
-    title: 'Tittle 2',
-    description: `sddsd', 'efwef', 'efwesdf`,
-    value: [
-      {
-        label: 'l-2-1',
-        value: 1111,
-        price: 10,
-      },
-      {
-        label: 'l-2-2',
-        value: 2222,
-        price: 20,
-      },
-    ],
-  },
-];
-
-const companyData = [
-  {
-    label: 'Company 1',
-    value: 'company_value_1',
-  },
-  {
-    label: 'Car tour',
-    value: 'company_value_2',
-  },
-  {
-    label: 'Main thing',
-    value: 'company_value_3',
-  },
-  {
-    label: 'Main car',
-    value: 'company_value_4',
-  },
-  {
-    label: 'cool things',
-    value: 'company_value_5',
-  },
-  {
-    label: 'Great tesla',
-    value: 'company_value_6',
-  },
-  {
-    label: 'Tesla 2',
-    value: 'company_value_7',
-  },
-];
+import { companyData } from './sample_data';
 
 export default function App() {
-  // const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [companiList, setCompaniList] = useState([]);
-  const [show, setShow] = useState(false);
-  // const addOnsModal = useRef(null);
-
-  // const onSelect = something => {
-  //   // console.log({ onSelect: { with: something } });
-  //   setSelectedAddOns(something);
-  // };
 
   const formik = useFormik({
     initialValues: {
@@ -101,13 +26,6 @@ export default function App() {
     },
     onSubmit: () => console.log({ onSubmit: 'called' }),
   });
-
-  // useEffect(() => {
-  //   console.log({ formikV: formik.values });
-  // }, [formik.values]);
-
-  // const getPrice = val => undefined;
-  // const getDropdownData = val => ({ label: '', data: val });
 
   const [fontLoaded] = useFonts({
     FilsonSoftRegular: require('./src/fonts/FilsonSoftRegular.otf'),
@@ -157,20 +75,22 @@ export default function App() {
           />
         </View>
       </FormikProvider>
-      {/* <TouchableOpacity onPress={() => setShow(!show)}>
-        <Text>Show data</Text>
-      </TouchableOpacity>
-      {show && (
-        <View style={styles.conScroll}>
-          <ScrollView style={styles.scroll}>
-            {companyData.map(data => (
-              <TouchableOpacity onPress={() => console.log({ data })}>
-                <Text style={styles.listStyle}>{data.label}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
-      )} */}
+      {/* 
+        <TouchableOpacity onPress={() => setShow(!show)}>
+          <Text>Show data</Text>
+        </TouchableOpacity>
+        {show && (
+          <View style={styles.conScroll}>
+            <ScrollView style={styles.scroll}>
+              {companyData.map(data => (
+                <TouchableOpacity onPress={() => console.log({ data })}>
+                  <Text style={styles.listStyle}>{data.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )} 
+      */}
     </View>
   );
 }
